@@ -6,6 +6,7 @@
 - Condition
 - Loops
 - Class
+- Interface vs Abstract
 - Exception handling
 - SQL (Oracle)
 
