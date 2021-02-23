@@ -1,0 +1,334 @@
+
+
+<프로그램 구성요소 형식>
+- 필드
+   자료형 필드명;
+
+- 메소드
+  리턴형 메소드명(변수선언)
+  {
+  
+  }
+
+- 클래스
+ class 클래스명
+  {
+     //필드선언
+     //메소드 정의  
+  }
+  
+※ 식별자 이름 규칙(변수명,메소드명,클래스명,패키지명)
+ - 첫글자 숫자 불가능
+   cup1, cup2  (O)
+   1cup, 2cup  (X)
+   
+   cupSize1, cupSize2  (O)
+   cup1Size, cup2Size  (O)
+   
+ - 특수문자 사용 불가
+   cup@, cup%    (X)
+   ----> 예외)_ , $ 사용가능   
+   
+   String name;
+   String studentname;
+   String studentName;
+   String student_name;
+   String _name;
+   
+  - 한글사용 가능(비권장-데이터와 혼동)
+   String 홍길동;
+          홍길동="길라임";
+          
+   System.out.println(홍길동);
+   
+  - 예약어 사용 금지
+   int class;  (X)
+   int public; (X)
+   int if;     (X)
+  
+  - 변수,메소드,패키지는 소문자를 원칙
+     클래스명은 첫글자 대문자 사용
+     
+※ 자바자료형 (기본자료형8 + 클래스자료형)
+
+  문자 - char (한개의 문자(2byte)를 저장할때 사용!!)
+   char ch;     //문자
+        ch='A';
+        ch='홍';
+        ch='3';
+        ch='AB';  (X)
+        
+   String str;  //문자열
+        str="AB";
+        str="";
+        str="홍";
+        str="홍길동";        
+        
+  숫자
+     정수
+    byte  - 1byte: 8bit  ---> 2의 8승(256) 
+                              -128~0~127
+    byte b;
+         b=13;
+         b=127;
+         
+         b=128;  (X)
+         b=-129; (X)                           
+                              
+    short - 2byte
+    int   - 4byte  (가장 많이 사용)
+    long  - 8byte
+      
+     실수  
+    float   - 4byte
+    double  - 8byte
+  
+  논리 - boolean  (명제의 참,거짓을 판별할 때 사용)
+  
+      boolean b1;
+              b1=true;
+              b1=false;
+              
+              b1='true';  (X)
+              b1="false"; (X) 
+
+  자료형 변수명; //변수선언
+  int  su;        ----> 속성변수
+  Test  test;     ----> 참조변수
+  HelloTest ht;
+  System sy;
+  
+-----------------------------------------
+문자 char String
+숫자 byte short int long
+   float double
+논리 boolean
+
+※ 자바주석문(Comment)
+   - 코드에 대한 설명문
+   - 실행중인 문장 중 잠시 보류하기 위해 사용하기도 함.
+   
+  1.라인주석문 (//)
+     //설명문
+     
+  2.블럭주석문 (/*     */)
+     //설명문1  
+     //설명문2 
+     //설명문3  
+   /*  
+        설명문1  
+        설명문2 
+        설명문3
+   */  
+------------------------------------------------------
+<프로그램 구성요소 사용법>
+1.필드  ---> 데이터 초기화해서 사용!!
+ 
+   자료형  변수명;  //변수선언   
+   변수명=데이터;  //변수초기화(값할당)
+   
+2.메소드  ----> (메소드이름을)호출해서 사용!!
+
+   리턴형 메소드명()
+  {
+  
+  } ---> 정의된, 구현된 메소드
+
+  void gidong(){1;2;3;}
+  
+  ---> 메소드 호출식:  gildong();
+
+  void juwon(int coin){
+  
+  }
+   
+  ---> 메소드 호출식:  juwon(500);
+  
+3. 클래스  ----> 객체생성(==메모리할당)해서 사용!!  
+ 
+  ★객체생성식    
+  A         obj    = new     A();
+ ---       -----     ---     ----
+클래스명           변수명          키워드       클래스명
+
+
+
+   300
+   
+  int su;     //선언
+      su=300; //초기화
+      
+  int su= 300;  //su=속성변수(값을 직접 저장하는 변수)
+  
+  A   obj=new A(); //obj=참조변수(메모리의 주소를 저장하는 변수)
+  
+  A obj;
+     obj = new A();         
+
+
+class A{ 
+
+  void hello(){
+    System.out.println("안녕");
+  }
+  
+}
+=======================================================
+<자바연산자>
+1. 산술연산자
+  + - * /(몫) , %(나머지)
+  
+  10/5 ---> 2
+  10/3 ---> 3 
+  
+  10%5 ---> 0
+  10%3 ---> 1
+
+2. 증감연산자
+  ++(1증가연산자)   --(1감소연산자)
+  
+  int su1=10;
+  System.out.println(su1); --->10
+       su1++;  //  su1 = su1+1;
+  System.out.println(su1); --->11
+  
+      ++su1;  //  su1 = su1+1;
+  System.out.println(su1); --->12
+  
+  
+             변수명++; (후위연산자) 나중연산자(만약 다른 연산과 동시수행할 경우 나중에 1증가)
+     ++변수명;   (전위연산자) 먼저연산자
+  
+  
+  
+  int su2=10;
+  System.out.println(su2); --->10
+      su2--;
+  System.out.println(su2); --->9
+       
+
+
+3. 비교(관계)연산자  (결과값이 항상 boolean)
+   >(크다)  <(작다)   >=(크거나 작다)   <=(작거나 같다)  ==(같다) !=(다르다)
+
+   ※주의)
+   >= : 반드시 부등호 먼저
+          => (X)
+   > = (X)  : 띄어쓰기 불가
+   !== (X): 등호는 한개
+   
+   ! ---> 부정연산자,not연산자 ,  현재 boolean값을 변경하는 역할
+   System.out.println(true); ---> true          
+   System.out.println(!true); ---> false
+   
+   
+   //int a=3;
+   //int b=4;
+   int a=3,b=4;
+   System.out.println(a>b); false
+   System.out.println(a<b); true
+   System.out.println(a==b); false
+   System.out.println(a!=b); true
+   
+   boolean boo = a==b;           
+
+
+4. 논리연산자 (결과값은 항상 boolean)
+   &&(and연산자, 그리고 연산자)
+   ||(or연산자, 또는 연산자)
+   
+   
+   ※ A,B는 boolean데이터!!
+   (true가 1, false가 0이라는 가정)
+   
+   A && B ---> 모든 조건을 만족했을 때 결과값 true!!
+  -------- 
+   0    0  ---> f
+   0    1  ---> f
+   1    0  ---> f
+   1    1  ---> true
+   
+   A || B ---> 하나의 조건이라도 만족했을 때 결과값 true!!
+  -------- 
+   0    0  ---> false
+   0    1  ---> true
+   1    0  ---> true
+   1    1  ---> true
+
+
+<윤년의 조건>
+1. 연도를 4로 나누어 나머지가 0이고
+   연도를 100으로 나누어 나머지가 0이 아닌 경우.
+   
+2. 연도를 400으로 나누어 나머지가 0인경우.
+
+---> class명 : LeapYearTest
+         변수사용: int year=2018;
+         
+         결과출력)
+           연도가 윤년일때 ---> true
+           연도가 평년일때 ---> false
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+
+
+
+
+  
+  
+  
+  
+  
+
+
+
+
+
+     
+     
+     
+      
+  
+  
+  
+  
+  
+   
+   
+              
+   
+   
+   
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+  
+ 
+ 
+ 
+ 

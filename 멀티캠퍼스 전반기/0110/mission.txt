@@ -1,0 +1,25 @@
+
+
+
+
+미션) NameMenu.java의 배열(Array)을 벡터(Vector)로 변경해서
+     NameMenu2.java를 작성하시오.
+     (NameMenuTest.java는 변경사항 없음!!)
+     
+     String []names = new String[5];
+     ---> Vector<String> names = new Vector<>();
+     
+
+추가미션)
+1. 수정,삭제시 존재하지 않는 이름이라면 화면에 아래 메시지를 출력하시오.
+   ---> #존재하지 않는 이름입니다!!
+   
+2. 5명이 초과하는 이름을 입력할 시에 아래 메시지를 출력하시오.
+   ---> #더 이상 입력할 수 없습니다!!
+                입력을 원할 시 기존 이름을 먼저 삭제하세요!!   
+       
+
+       
+       
+       
+       

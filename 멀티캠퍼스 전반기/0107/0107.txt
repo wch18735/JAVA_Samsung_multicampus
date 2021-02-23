@@ -1,0 +1,224 @@
+<final>
+1. final 자료형 변수명;
+  ---> 마지막 변수 : 상수(constant)
+  ---> 상수의 식별을 위해 전체 대문자로 표기
+  예) final int MAX=100;
+  ※주의사항
+   final선언된 변수는 반드시 값을 지정해야 함.
+    ---> class A{ int su; }              (O):기본값 0을 갖음
+    ---> class A{ final int SU; }       (X):특정값을 지정해야 함
+    ---> class A{ final int SU=10; }    (O):일정한 값을 지정함
+
+2. final 리턴형 메소드명(){}
+  ---> 마지막 메소드 : 오버라이딩(메소드 재정의) 할수 없는 메소드
+
+  
+3. final class 클래스명{}
+  ---> 마지막 클래스 : 자식클래스를 갖지 않는 클래스
+  ---> 완벽한 클래스(자식통한 기능확장을 원치않는다.)
+  ---> 보안
+      
+  예) public final class String{}
+  
+    public class My extends String{
+        //에러발생: final클래스는 extends 뒤에 사용 금지.    
+    }
+
+<static>
+- 정적메모리 할당을 표현하는 키워드.
+- 자주 사용되는 메소드나 객체간 공유할 데이터를 표현할 때 사용.
+- 클래스명을 통한 접근
+    -->클래스메소드,클래스변수
+    -->static메소드,static변수
+
+ 예)
+    class A{
+      static int su=0;
+      static void hello(){}
+    }
+  ---> new 키워드 사용없이 클래스 참조시 static메모리 할당.
+  ---> 클래스명을 통한 접근(참조변수명 없이 참조)
+       System.out.println(A.su);
+       A.hello();
+   
+    class A{
+       int i=0;
+       void goodBye(){}
+    }
+  ---> static 없는 멤버들에 대해서는 반드시 new를 사용해서 사용.
+  ---> 참조변수(레퍼런스변수)를 통한 접근
+       A a = new A();    //a:참조변수
+         System.out.println(a.i);
+         a.goodBye();
+       A a2 = new A();    //a:참조변수
+         a2.goodBye();
+         
+       new A().goodBye();  
+         
+=============================================================
+<자바입력> - 프로그램 실행도중 입력
+1. byte단위 입력
+  - (한자리)숫자입력
+    int su = System.in.read()-48;
+  - 문자입력
+    char ch = (char)System.in.read();
+    
+  ===> System.in.read()는 눌려진 키보드에 대한 ASCII코드 숫자 입력!!
+  
+2. 라인단위 입력
+  BufferedReader클래스: readLine()메소드 사용.
+
+  a)객체생성
+     BufferedReader  br = new BufferedReader
+                           (new InputStreamReader(System.in));
+                           
+
+   <자바I/O>
+     - 기본: Stream (8bit로 구성된 데이터의 흐름)
+     
+     - IO의 4대 클래스
+     
+             <byte단위>        <문자단위>
+            쓰기    OutputStream       Writer
+            읽기    InputStream        Reader
+
+   class A{
+       void    m1(int su)     {           }
+       int     m2(String name){return 200;}
+       String  m3()           {return "홍길동";}   
+   }
+
+   String name=m3();
+   int su = m2(name);
+   m1(su);
+  
+        m1(  m2(   m3()   )   );
+실행순서    <--------------
+       
+  b)문자열입력
+     String str = br.readLine();//입력시점
+                  abc엔터 ---> str="abc";
+                  123엔터 ---> str="123";
+    
+  c)숫자입력(변환)
+     int su = Integer.parseInt(str); 
+             "123" ---> 123
+             
+※ parseInt메소드는 파라미터에 전달된 숫자조합의 문자열을 숫자로 변환해줌.
+    parseInt("숫자로 구성된 문자열");             
+    parseInt("123");       -----> 결과: 123             
+    parseInt("안녕하세요");   -----> 에러발생!!   
+    parseInt("123a");      -----> 에러발생!!
+                                 (반드시 숫자로만 조합된 문자열이어야 함)             
+  
+==================================================================
+<interface> 인터페이스
+  형식)
+    interface 인터페이스명
+    {
+      //필드
+      [고정 public static final] int COIN=100;
+      
+      //선언된 메소드   
+      
+      [고정 public abstract] void hello();
+      
+    }
+    
+    ----> 저장: 인터페이스명.java ---컴파일--->  인터페이스명.class
+    
+    
+  - 클래스에 다중 상속을 구현할 수 있다.
+  - inferface의 구성멤버는 필드, 선언된 메소드로만 구성.
+     void print()
+     {
+     
+     }//---> 정의된 메소드, 구현된 메소드
+     
+     void print();//---> 선언된 메소드!!
+  
+  
+  - 서로 다른 제품에 연결할 수 있는 공통연결 모듈을 의미
+  - ★인터페이스는 어떻게 사용? 클래스에 구현해서 사용.
+                              ----
+                                            키워드: implements
+                                            
+  class 클래스명  implements 인터페이스명       
+  {            ----------
+                              구현의 약속
+  
+  }                                                         
+  
+<클래스와 인터페이스간의 상속문법>
+1. class A{}
+
+   class B extends A{
+                  ---
+                               단일상속
+   }
+   
+2. interface A{}
+   interface B{}
+   
+   class C implements A,B{
+                     -----
+                                      다중상속
+                                      
+   }   
+
+
+3. interface A{}
+   interface B{}
+   class C{}
+   
+   class D  implements A,B  extends  C{ //---> 에러!!   
+   
+   }
+   
+   class D  extends  C implements A,B { //--->클래스상속 먼저!!   
+   
+   }
+   
+4. interface A{ void print();  }
+   interface B{ void hello();  }
+   
+   interface C  extends A,B {
+   
+   }   
+
+5. class A{}
+
+   interface B         A{ //말이 안됨!!
+   
+   }
+
+
+
+
+
+
+
+
+
+
+
+   
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+    
+    

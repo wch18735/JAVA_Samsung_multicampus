@@ -1,0 +1,210 @@
+
+
+
+<instanceof 연산자>
+- 객체 판별연산자 (특정 레퍼런스가 객체를 참조할 수 있는지 여부)
+- 형변환 판별연산자
+ 형식)
+     참조변수  instanceof 자료형
+                    ------
+                                     클래스명 또는 인터페이스명
+                                     
+   ==> 결과값 : boolean                                     
+
+
+
+
+
+
+===============================================================
+* TUI (Text User Interface)
+   -프로그램 실행을 Text에 의존해서 실행.
+   ex) 메뉴에서 1을 누르면 추가, 2를 누르면 검색, 3을 누르면 종료.
+   
+   
+
+* AWT (Abstract Window Toolkit)
+   - GUI(Graphic User Interface)환경을 구축하기위한 class들의 묶음.
+   - GUI와 관련된 class들의 묶음.  java.awt.*;
+   
+   1. Component : Menu, Button, Label, Choice, Checkbox, List
+                      TextField, TextArea, Scrollbar.....
+                      
+   2. Container : Component의 객체를 생성한 후에 그 객체를 배치한다.
+         
+		     
+                   Object
+                      |
+                 Component   
+                      |
+                  Container
+	                  |
+	      ------------------------
+	     |                        |
+
+	   Panel                   Window
+	     |                        |
+	   Applet                   Frame
+
+default:  FlowLayout        BorderLayout   
+
+
+    Frame f = new Frame();
+      Button bt = new Button();
+      
+      //배치방법을 설정!!
+      
+      
+      f.add(bt);
+
+
+
+
+     Panel : display(x) , 한 영역에 두개 이상의 컴포넌트를 붙일때 사용.
+              컴포넌트 속성을 지정하기위해 사용.
+     Frame : display(o)
+
+   3. Event 처리: Component에 기능을 실제로 부여하는 것.
+
+ * Container의 배치방법(LayoutManager)
+ 
+    - FlowLayout (가운데정렬)
+       : 가운데를 기준으로 해서 Component들이 배치.
+         (Frame 크기에 따라 배치가 변경)
+
+    - BorderLayout (방위정렬)
+       : 방위에 따라 사용자가 임의배치가능 (동,서,남,북,중앙)
+
+    - GridLayout (같은크기정렬)
+       : Container의 크기를 같은 크기로 나누어 Component를 붙인다.
+
+
+    - CardLayout  (같은위치정렬)
+       : 같은 위치에 여러개의 Component를 배치할 때 사용.
+
+
+---------------------------------------------------------------
+<GUI클래스 작성법1>
+
+class 클래스명{
+   //컴포넌트, 컨테이너 객체 선언
+   Frame f;
+   
+     클래스명(){
+     f.~
+     //컴포넌트, 컨테이너 객체 생성
+     
+     //컴포넌트, 컨테이너 속성 설정 (레이아웃 설정, 붙이기, 바탕색, 글자색)
+     
+     //마무리(컨테이너에 대한 사이즈, 보이기 설정)
+   } 
+   
+   public static void main(String[]args){
+     //생성자 호출
+   }
+
+}
+
+
+<GUI클래스 작성법2>
+
+class 클래스명 extends Frame{
+   //컴포넌트, 컨테이너 객체 선언
+   
+     클래스명(){
+     this.~ (보통 생략)
+     //컴포넌트, 컨테이너 객체 생성
+     
+     //컴포넌트, 컨테이너 속성 설정 (레이아웃 설정, 붙이기, 바탕색, 글자색)
+     
+     //마무리(컨테이너에 대한 사이즈, 보이기 설정)
+   } 
+   
+   public static void main(String[]args){
+     //생성자 호출
+   }
+
+}
+
+
+===============================================================
+
+
+<Event처리> : 컴포넌트에 기능을 부여하는 것.
+
+1. 컴포넌트에 적용할 이벤트를 분석.
+   ------
+   이벤트 소스!!
+
+2. Event리스너(인터페이스)를 상속  implements
+
+3. 메소드구현
+   --------
+   이벤트 핸들러!!
+
+4. 감시자(연결자) 등록 (Event Handler이벤트 처리부와 Event Source를 연결)
+  ---> 마무리 메소드 밑에 위치
+  ---> 이벤트소스.add+이벤트리스너명(이벤트처리부의 위치);
+                 bt.addActionListener(this);
+---------------------------------------------------------------
+<역으로 생각해 보기>
+ bt.addActionListener(this);
+ 
+ ---> addActionListener()메소드의 위치는? Button
+ 
+ class Button extends Component{
+ 
+    public void addActionListener(ActionListener li){
+       if(만약 버튼이 클릭되었다면){
+          li.actionPerformed();
+       }
+    }
+ }
+ 
+1. 이벤트소스(기능부여할 Source)의 종류(Type)알아보기 
+   bt ---> Button
+
+2. Button  ------API문서------->  add~Listener()메소드 찾기!!
+                               ---> addActionListener()
+                               ---> add와 Listener를 빼면 이벤트분석 끝
+                               ---> Action이벤트 적용
+
+3. class My implements ActionListener{
+    
+      public void actionPerformed(ActionEvent e){//이벤트 처리부
+                  
+      }
+   }                               
+                               
+                               
+4. class My implements ActionListener{
+    
+          생성자(){
+          
+        //소스.add이벤트리스너(핸들러 위치)  
+         bt.addActionListener(this); 
+
+      }    
+    
+      public void actionPerformed(ActionEvent e){//이벤트 처리부
+                  
+      }
+   }
+
+
+
+   
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,11 @@
+
+ 			컬럼명		자료형
+ 직원번호		empno		number(4)
+ 직원이름		ename		varchar2(10)
+ 직원직무		job		varchar2(9)
+ 해당직원의 관리자	mgr		number(4)
+ 직원의 고용일자	hiredate	date
+ 연봉			sal		number(7,2)
+ 성과급			comm		number(7,2)
+ 부서번호		deptno		number(2)
+ 

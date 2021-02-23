@@ -1,0 +1,10 @@
+ 	자바코드 이용해서 DB작업
+ 	1. DB에 접속
+	2. DBMS에 명령어를 질의하고
+	3. DBMS로부터 질의 결과 얻어오기
+
+	■ CreateTableTest
+
+	DBMS 안의 특정 DB와 연결을 갖는 Connection 객체 획득
+	내가 질의할 sql문을 담은 Statement 객체 생성
+	Connection 객체에 Statement 객체를 전달
