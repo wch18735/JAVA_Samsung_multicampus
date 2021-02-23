@@ -16,5 +16,5 @@
 - **[Book]** Java의 정석 (도우출판)
 
 ### To do List
--[ ] Thread  
--[ ] Networking
+- [ ] Thread  
+- [ ] Networking
